@@ -24,7 +24,8 @@ form?.addEventListener("submit", (event) => {
         const rootOne = (-b + Math.sqrt(discriminant)) / (2 * a);
         (document.getElementById("result") as HTMLInputElement).value = `x=${rootOne}`;
     }
-
+    
+    ctx.clearRect(0,0,600,600);
     ctx.strokeStyle = "#ddd";
     ctx.lineWidth = 1;
 
