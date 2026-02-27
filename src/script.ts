@@ -32,13 +32,8 @@ form?.addEventListener("submit", (event) => {
         ctx.beginPath();
         ctx.moveTo(x, -600);
         ctx.lineTo(x, 600);
-        ctx.stroke();
-    }
-
-    for (let y = -600; y <= 600; y += 20) {
-        ctx.beginPath();
-        ctx.moveTo(-600, y);
-        ctx.lineTo(600, y);
+        ctx.moveTo(-600, x);
+        ctx.lineTo(600, x);
         ctx.stroke();
     }
 
@@ -53,5 +48,22 @@ form?.addEventListener("submit", (event) => {
     ctx.beginPath();
     ctx.moveTo(300, 0);
     ctx.lineTo(300, 600);
+    ctx.stroke();
+
+    ctx.beginPath();
+
+    for (let x = -300; x <= 300; x++) {
+        const X = x / 20;
+        const y = a * X * X * X + b * X * X + c * X + d;
+
+        if (x === -300) {
+            ctx.moveTo(x + 300, 300 - y * 20);
+        } else {
+            ctx.lineTo(x + 300, 300 - y * 20);
+        }
+    }
+
+    ctx.strokeStyle = "red";
+    ctx.lineWidth = 2;
     ctx.stroke();
 })
