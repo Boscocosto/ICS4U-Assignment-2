@@ -20,10 +20,26 @@
       <input type="number" id="c" name="c" required />
       <label for="d">d value:</label>
       <input type="number" id="d" name="d" required />
-      <label for="result">Result:</label>
-      <input type="text" id="result" name="result" readonly />
       <input type="submit" value="Calculate" />
     </form>
+  </div>
+  <div class="container">
+    <h1>Results</h1>
+    <form id="result">
+      <label for="rootOne">Root 1:</label>
+      <input type="text" id="rootOne" readonly />
+      <label for="rootTwo">Root 2:</label>
+      <input type="text" id="rootTwo" readonly />
+      <label for="rootThree">Root 3:</label>
+      <input type="text" id="rootThree" readonly />
+      <label for="p">p:</label>
+      <input type="text" id="p" readonly />
+      <label for="q">q:</label>
+      <input type="text" id="q" readonly />
+      <label for="discriminate">Discriminate:</label>
+      <input type="text" id="discriminate" readonly />
+    </form>
+  </div>
   </div>
   <div>
     <canvas id="graph" width="600" height="600"></canvas>

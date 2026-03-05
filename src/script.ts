@@ -1,28 +1,52 @@
-const form = document.getElementById("cubic-form") as HTMLFormElement;
+const cubic = document.getElementById("cubic-form") as HTMLFormElement;
 const canvas = document.getElementById("graph") as HTMLCanvasElement;
 const ctx = canvas.getContext("2d")!;
 
-form?.addEventListener("submit", (event) => {
+document?.addEventListener("submit", (event) => {
     event.preventDefault();
 
-    const formData = new FormData(form);
+    const formData = new FormData(cubic);
 
     const a: number = Number(formData.get("a"));
     const b: number = Number(formData.get("b"));
     const c: number = Number(formData.get("c"));
     const d: number = Number(formData.get("d"));
-
-    const discriminant = b * b - 4 * a * c;
+    const p = (3 * a * c - Math.pow(b, 2)) / (3 * Math.pow(a, 2));
+    const q = ((27 * Math.pow(a, 2) * d - 9 * a * b * c + 2 * Math.pow(b, 3))) / (27 * Math.pow(a, 3))
+    const discriminant = Math.pow(q / 2, 2) + Math.pow(p / 3, 3);
 
     if (discriminant < 0) {
-        (document.getElementById("result") as HTMLInputElement).value = "No Roots";
+        const angle = (1 / 3) * Math.acos(-q / (2 * (Math.sqrt(-Math.pow(p / 3, 3)))));
+        const rootOne = (2 * (Math.sqrt(-p / 3)) * Math.cos(angle)) - (b / (3 * a));
+        const rootTwo = (2 * (Math.sqrt(-p / 3)) * Math.cos(angle + (2 * Math.PI) / 3)) - (b / (3 * a));
+        const rootThree = (2 * (Math.sqrt(-p / 3)) * Math.cos(angle + (4 * Math.PI) / 3)) - (b / (3 * a));
+        (document.getElementById("rootOne") as HTMLInputElement).value = `${rootOne}`;
+        (document.getElementById("rootTwo") as HTMLInputElement).value = `${rootTwo}`;
+        (document.getElementById("rootThree") as HTMLInputElement).value = `${rootThree}`;
+        (document.getElementById("p") as HTMLInputElement).value = `${p}`;
+        (document.getElementById("q") as HTMLInputElement).value = `${q}`;
     } else if (discriminant > 0) {
-        const rootOne = (-b + Math.sqrt(discriminant)) / (2 * a);
-        const rootTwo = (-b - Math.sqrt(discriminant)) / (2 * a);
-        (document.getElementById("result") as HTMLInputElement).value = `x1=${rootOne}, x2=${rootTwo}`;
+        const u = Math.cbrt((-q / 2) + Math.sqrt(discriminant));
+        const v = Math.cbrt((-q / 2) - Math.sqrt(discriminant));
+        const rootOne = u + v - (b / (3 * a))
+        const rootTwo = "Complex";
+        const rootThree = "Complex";
+        (document.getElementById("rootOne") as HTMLInputElement).value = `${rootOne}`;
+        (document.getElementById("rootTwo") as HTMLInputElement).value = `${rootTwo}`;
+        (document.getElementById("rootThree") as HTMLInputElement).value = `${rootThree}`;
+        (document.getElementById("p") as HTMLInputElement).value = `${p}`;
+        (document.getElementById("q") as HTMLInputElement).value = `${q}`;
     } else {
-        const rootOne = (-b + Math.sqrt(discriminant)) / (2 * a);
-        (document.getElementById("result") as HTMLInputElement).value = `x=${rootOne}`;
+        const r1 = Math.cbrt(q / 2);
+        const shift = b / (3 * a);
+        const rootOne = r1 - shift;
+        const rootTwo = -2 * r1 - shift;
+        const rootThree = -2 * r1 - shift;
+        (document.getElementById("rootOne") as HTMLInputElement).value = `${rootOne}`;
+        (document.getElementById("rootTwo") as HTMLInputElement).value = `${rootTwo}`;
+        (document.getElementById("rootThree") as HTMLInputElement).value = `${rootThree}`;
+        (document.getElementById("p") as HTMLInputElement).value = `${p}`;
+        (document.getElementById("q") as HTMLInputElement).value = `${q}`;
     }
 
     ctx.clearRect(0, 0, 600, 600);
