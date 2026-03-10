@@ -13,7 +13,6 @@ body {
     background: #f4f4f4;
 }
 
-/* form containers */
 .container {
     width: 300px;
     background: white;
@@ -58,8 +57,22 @@ input[type="submit"]:hover {
     background: #005fd1;
 }
 
-/* graph */
 canvas {
     border: 1px solid #ccc;
     background: white;
+}
+
+.visual {
+    display: flex;
+    flex-direction: column;
+}
+
+.equation {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.graph {
+    text-align: center;
+    margin: 20px auto;
 }

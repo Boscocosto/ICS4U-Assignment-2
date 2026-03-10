@@ -7,6 +7,9 @@ document?.addEventListener("submit", (event) => {
 
     const formData = new FormData(cubic);
 
+    const equationDisplay = document.getElementById("equation") as HTMLParagraphElement;
+    const equation = `y = ${(document.getElementById("a") as HTMLInputElement).value}x³ + ${(document.getElementById("b") as HTMLInputElement).value}x² + ${(document.getElementById("c") as HTMLInputElement).value}x + ${(document.getElementById("d") as HTMLInputElement).value}`;
+    equationDisplay.innerText = equation;
     const a: number = Number(formData.get("a"));
     const b: number = Number(formData.get("b"));
     const c: number = Number(formData.get("c"));
@@ -21,18 +24,18 @@ document?.addEventListener("submit", (event) => {
         const rootOne = (2 * (Math.sqrt(-p / 3)) * Math.cos(angle)) - (b / (3 * a));
         const rootTwo = (2 * (Math.sqrt(-p / 3)) * Math.cos(angle + (2 * Math.PI) / 3)) - (b / (3 * a));
         const rootThree = (2 * (Math.sqrt(-p / 3)) * Math.cos(angle + (4 * Math.PI) / 3)) - (b / (3 * a));
-        (document.getElementById("rootOne") as HTMLInputElement).value = `${rootOne}`;
-        (document.getElementById("rootTwo") as HTMLInputElement).value = `${rootTwo}`;
-        (document.getElementById("rootThree") as HTMLInputElement).value = `${rootThree}`;
+        (document.getElementById("rootOne") as HTMLInputElement).value = `${rootOne},0`;
+        (document.getElementById("rootTwo") as HTMLInputElement).value = `${rootTwo},0`;
+        (document.getElementById("rootThree") as HTMLInputElement).value = `${rootThree},0`;
         (document.getElementById("p") as HTMLInputElement).value = `${p}`;
         (document.getElementById("q") as HTMLInputElement).value = `${q}`;
     } else if (discriminant > 0) {
         const u = Math.cbrt((-q / 2) + Math.sqrt(discriminant));
         const v = Math.cbrt((-q / 2) - Math.sqrt(discriminant));
         const rootOne = u + v - (b / (3 * a))
-        const rootTwo = "Complex";
-        const rootThree = "Complex";
-        (document.getElementById("rootOne") as HTMLInputElement).value = `${rootOne}`;
+        const rootTwo = "Complex Number";
+        const rootThree = "Complex Number";
+        (document.getElementById("rootOne") as HTMLInputElement).value = `${rootOne},0`;
         (document.getElementById("rootTwo") as HTMLInputElement).value = `${rootTwo}`;
         (document.getElementById("rootThree") as HTMLInputElement).value = `${rootThree}`;
         (document.getElementById("p") as HTMLInputElement).value = `${p}`;
@@ -43,9 +46,9 @@ document?.addEventListener("submit", (event) => {
         const rootOne = r1 - shift;
         const rootTwo = -2 * r1 - shift;
         const rootThree = -2 * r1 - shift;
-        (document.getElementById("rootOne") as HTMLInputElement).value = `${rootOne}`;
-        (document.getElementById("rootTwo") as HTMLInputElement).value = `${rootTwo}`;
-        (document.getElementById("rootThree") as HTMLInputElement).value = `${rootThree}`;
+        (document.getElementById("rootOne") as HTMLInputElement).value = `${rootOne},0`;
+        (document.getElementById("rootTwo") as HTMLInputElement).value = `${rootTwo},0`;
+        (document.getElementById("rootThree") as HTMLInputElement).value = `${rootThree},0`;
         (document.getElementById("p") as HTMLInputElement).value = `${p}`;
         (document.getElementById("q") as HTMLInputElement).value = `${q}`;
     }
