@@ -14,6 +14,7 @@ document?.addEventListener("submit", (event) => {
     const p = (3 * a * c - Math.pow(b, 2)) / (3 * Math.pow(a, 2));
     const q = ((27 * Math.pow(a, 2) * d - 9 * a * b * c + 2 * Math.pow(b, 3))) / (27 * Math.pow(a, 3))
     const discriminant = Math.pow(q / 2, 2) + Math.pow(p / 3, 3);
+    (document.getElementById("discriminant") as HTMLInputElement).value = `${discriminant}`;
 
     if (discriminant < 0) {
         const angle = (1 / 3) * Math.acos(-q / (2 * (Math.sqrt(-Math.pow(p / 3, 3)))));
@@ -84,4 +85,20 @@ document?.addEventListener("submit", (event) => {
         ctx.lineTo(300 + x, 300 - y * 20);
         ctx.stroke();
     }
+
+    const roots = [
+        Number((document.getElementById("rootOne") as HTMLInputElement).value),
+        Number((document.getElementById("rootTwo") as HTMLInputElement).value),
+        Number((document.getElementById("rootThree") as HTMLInputElement).value)
+    ];
+
+    ctx.fillStyle = "blue";
+
+    roots.forEach((r) => {
+        if (Number.isFinite(r)) {
+            ctx.beginPath();
+            ctx.arc(300 + r * 20, 300, 5, 0, 2 * Math.PI);
+            ctx.fill();
+        }
+    });
 })
