@@ -25,20 +25,43 @@
   </div>
   <div class="container">
     <h1>Results</h1>
-    <form id="result">
-      <label for="rootOne">Root 1:</label>
-      <input type="text" id="rootOne" readonly />
-      <label for="rootTwo">Root 2:</label>
-      <input type="text" id="rootTwo" readonly />
-      <label for="rootThree">Root 3:</label>
-      <input type="text" id="rootThree" readonly />
-      <label for="p">p:</label>
-      <input type="text" id="p" readonly />
-      <label for="q">q:</label>
-      <input type="text" id="q" readonly />
-      <label for="discriminant">Discriminate:</label>
-      <input type="text" id="discriminant" readonly />
-    </form>
+
+    <div class="resultBox">
+      <table class="resultsTable">
+        <tr>
+          <td>p</td>
+          <td id="p"></td>
+        </tr>
+        <tr>
+          <td>q</td>
+          <td id="q"></td>
+        </tr>
+        <tr>
+          <td>Discriminant</td>
+          <td id="discriminant"></td>
+        </tr>
+        <tr class="tableHeader">
+          <td>Value</td>
+          <td>x</td>
+          <td>y</td>
+        </tr>
+        <tr>
+          <td>Root 1</td>
+          <td id="rootOne"></td>
+          <td>0</td>
+        </tr>
+        <tr>
+          <td>Root 2</td>
+          <td id="rootTwo"></td>
+          <td>0</td>
+        </tr>
+        <tr>
+          <td>Root 3</td>
+          <td id="rootThree"></td>
+          <td>0</td>
+        </tr>
+      </table>
+    </div>
   </div>
   <div class="visual">
     <div class="equation">
