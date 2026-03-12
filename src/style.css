@@ -13,8 +13,8 @@ body {
     background: #f4f4f4;
 }
 
-.container {
-    width: 300px;
+.form, .results {
+    width: 450px;
     background: white;
     padding: 20px;
     margin-bottom: 25px;
@@ -65,6 +65,7 @@ canvas {
 .visual {
     display: flex;
     flex-direction: column;
+    margin-left: 40px;
 }
 
 .equation {
@@ -75,4 +76,30 @@ canvas {
 .graph {
     text-align: center;
     margin: 20px auto;
+}
+
+.resultBox {
+    width: 100%;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+}
+
+.resultsTable td {
+    padding: 10px;
+    border: 1px solid #ccc;
+    text-align: left;
+}
+
+.resultsTable tr.tableHeader {
+    background: #0077ff;
+    color: white;
+    font-weight: bold;
+}
+
+.resultsTable tr.tableHeader td {
+    border-color: #0077ff;
 }

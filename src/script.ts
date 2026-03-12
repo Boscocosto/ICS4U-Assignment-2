@@ -90,9 +90,9 @@ document?.addEventListener("submit", (event) => {
     }
 
     const roots = [
-        Number((document.getElementById("rootOne") as HTMLInputElement).value.split(",")[0],),
-        Number((document.getElementById("rootTwo") as HTMLInputElement).value.split(",")[0],),
-        Number((document.getElementById("rootThree") as HTMLInputElement).value.split(",")[0],)
+        Number((document.getElementById("rootOne") as HTMLInputElement).innerText.split(",")[0],),
+        Number((document.getElementById("rootTwo") as HTMLInputElement).innerText.split(",")[0],),
+        Number((document.getElementById("rootThree") as HTMLInputElement).innerText.split(",")[0],)
     ];
 
     ctx.fillStyle = "blue";
